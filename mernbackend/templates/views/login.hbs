@@ -1,0 +1,71 @@
+
+	<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Sign In</title>
+  
+      <!-- Font Icon -->
+      <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+  
+      <!-- Main css -->
+      <link rel="stylesheet" href="css/style.css">
+      {{>header}}
+  </head>
+  <body>
+   {{>navbar}}
+    
+      <div class="main">
+  
+          <!-- Sing in  Form -->
+          <section class="sign-in">
+              <div class="container">
+                  <div class="signin-content">
+                      <div class="signin-image">
+                          <figure><img src="images/rb.png" alt="sing up image"></figure>
+                          <a href="#" class="signup-image-link">Create an account</a>
+                      </div>
+  
+                      <div class="signin-form">
+                          <h2 class="form-title">Sign In</h2>
+                          <form action="/login" method="POST" class="register-form" id="login-form">
+                              <div class="form-group">
+                                  <label for="your_name">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open-fill" viewBox="0 0 16 16">
+                                      <path d="M8.941.435a2 2 0 0 0-1.882 0l-6 3.2A2 2 0 0 0 0 5.4v.313l6.709 3.933L8 8.928l1.291.717L16 5.715V5.4a2 2 0 0 0-1.059-1.765l-6-3.2zM16 6.873l-5.693 3.337L16 13.372v-6.5zm-.059 7.611L8 10.072.059 14.484A2 2 0 0 0 2 16h12a2 2 0 0 0 1.941-1.516zM0 13.373l5.693-3.163L0 6.873v6.5z"/>
+                                    </svg>
+                                  </label>
+                                  <input type="text" name="your_name" id="your_name" placeholder="Your Email"/>
+                              </div>
+                              <div class="form-group">
+                                  <label for="your_pass">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                                      <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                                    </svg>
+                                  </label>
+                                  <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                              </div>
+                              <div class="form-group">
+                                  <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                  <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                              </div>
+                              <div class="form-group form-button">
+                                  <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </section>
+  
+      </div>
+
+     
+  
+      <!-- JS -->
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="js/main.js"></script>
+  </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+  </html>
