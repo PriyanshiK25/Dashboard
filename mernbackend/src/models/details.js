@@ -1,11 +1,12 @@
 const mongoose=require("mongoose");
 
 const detailSchema=new mongoose.Schema({
-    Fname :{
+    Fname : {
         type:String,
         required:true
 
     },
+    
     Lname :{
         type:String,
         required:true
@@ -75,3 +76,6 @@ const detailSchema=new mongoose.Schema({
 const Detail = new mongoose.model("Detail",detailSchema);
 
 module.exports = Detail;
+
+
+

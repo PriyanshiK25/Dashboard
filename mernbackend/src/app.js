@@ -3,7 +3,9 @@ const express =require("express");
 const app = express();
 const path =require("path");
 const hbs=require("hbs");
+const ejs=require("ejs");
 require("./db/conn");
+
 const Register = require("./models/registers");
 const CRegister = require("./models/cregisters");
 const Detail = require("./models/details");
@@ -24,12 +26,20 @@ app.use(express.static(static_path));
 app.set("view engine", "hbs");
 app.set("views",template_path);
 hbs.registerPartials(partials_path);
-
+app.set("view engine", "ejs");
 //app.use(express.static('views/images')); 
 
 app.get("/",(req,res)=> {
-    res.render("index")
+    res.render("index.hbs")
 });
+
+app.get("/fetch",(req,res)=> {
+    Detail.find({},function(err,details){
+        res.render("fetch.ejs",{
+            detailList: details
+        })
+    })
+})
 app.get("/register",(req,res)=>
 {
     res.render("register"); 
@@ -96,7 +106,7 @@ try {
 })
 app.get("/login",(req,res)=>
 {
-    res.render("login"); 
+    res.render("login.hbs"); 
 })
 
 app.post("/register",async(req,res)=>{
@@ -133,11 +143,11 @@ try {
     const password=req.body.your_pass;
 
     const check_email= await Register.findOne({email:email});
-   // console.log(check_email.pass);
+    //console.log(check_email.pass);
    // console.log(password);
    if(check_email.pass===password)
     {
-        res.status(201).render("Student/login");
+        res.status(201).render("slogin.hbs");
     }
     else
     {
@@ -149,23 +159,21 @@ try {
 }
 })
 
-app.get("Student/login",(req,res)=> {
-    res.render("Student/login")
+app.get("slogin",(req,res)=> {
+    res.render("slogin.hbs")
 });
 
 app.get("/detail",(req,res)=> {
-    res.render("detail")
+    res.render("detail.hbs")
 });
-
 
 app.post("/detail",async(req,res)=>{
     try {
         console.log(req.body.Fname);
-        res.send(req.body.Fname);
-            /*const studentDetails = new Detail({
+        
+        
+            const studentDetails = new Detail({
 
-                
-                
                 Fname:req.body.Fname,
                 Lname:req.body.Lname,
                 USN:req.body.USN,
@@ -181,9 +189,9 @@ app.post("/detail",async(req,res)=>{
                 History:req.body.History
 
                 
-            })*/
+            })
             const registerD = await studentDetails.save();
-            res.status(201).render("login");
+            res.status(201).render("slogin.hbs");
 
     } catch (error) {
     res.status(400).send(error);
